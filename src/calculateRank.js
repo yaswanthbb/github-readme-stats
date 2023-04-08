@@ -15,18 +15,25 @@ function calculateRank({
     COMMITS_WEIGHT = 0.25;
   const FOLLOWERS_MEAN = 50,
     FOLLOWERS_WEIGHT = 0.25;
-  const PRS_ISSUES_MEAN = 25,
-    PRS_ISSUES_WEIGHT = 0.25;
+  const PRS_MEAN = 25,
+    PRS_WEIGHT = 0.35;
+  const ISSUES_MEAN = 25,
+    ISSUES_WEIGHT = 0.25;
   const STARS_MEAN = 100,
-    STARS_WEIGHT = 0.75;
+    STARS_WEIGHT = 0.6;
 
   const TOTAL_WEIGHT =
-    COMMITS_WEIGHT + FOLLOWERS_WEIGHT + PRS_ISSUES_WEIGHT + STARS_WEIGHT;
+    COMMITS_WEIGHT +
+    FOLLOWERS_WEIGHT +
+    PRS_WEIGHT +
+    ISSUES_WEIGHT +
+    STARS_WEIGHT;
 
   const rank =
     (COMMITS_WEIGHT * expsf(totalCommits, 1 / COMMITS_MEAN) +
       FOLLOWERS_WEIGHT * expsf(followers, 1 / FOLLOWERS_MEAN) +
-      PRS_ISSUES_WEIGHT * expsf(prs + issues, 1 / PRS_ISSUES_MEAN) +
+      PRS_WEIGHT * expsf(prs, 1 / PRS_MEAN) +
+      ISSUES_WEIGHT * expsf(issues, 1 / ISSUES_MEAN) +
       STARS_WEIGHT * expsf(stargazers, 1 / STARS_MEAN)) /
     TOTAL_WEIGHT;
 
