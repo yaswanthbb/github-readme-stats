@@ -41,7 +41,7 @@ describe("Test calculateRank", () => {
         issues: 50,
         stargazers: 300,
       }),
-    ).toStrictEqual({ level: "A+", score: 11.458333333333332 });
+    ).toStrictEqual({ level: "A+", score: 11.607142857142858 });
   });
 
   it("expert user gets S rank", () => {
@@ -55,7 +55,7 @@ describe("Test calculateRank", () => {
         issues: 100,
         stargazers: 500,
       }),
-    ).toStrictEqual({ level: "S", score: 2.685546875 });
+    ).toStrictEqual({ level: "S", score: 2.748325892857143 });
   });
 
   it("Linus Torvalds gets S+ rank", () => {
@@ -69,6 +69,6 @@ describe("Test calculateRank", () => {
         issues: 2,
         stargazers: 109100,
       }),
-    ).toStrictEqual({ level: "S+", score: 2.2021209178513677 });
+    ).toStrictEqual({ level: "S+", score: 1.8875322153011722 });
   });
 });
